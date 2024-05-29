@@ -1,0 +1,55 @@
+<!-- <h1>Hello Trainers...</h1> -->
+
+<form [formGroup]="saleForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="transactionDate">Transaction Date:</label>
+      <input type="date" formControlName="transactionDate">
+    </div>
+    <div> 
+      <label for="customerId">Customer ID:</label>
+      <input type="text" formControlName="customerId">
+    </div>
+    <div>
+      <label for="totalAmount">Total Amount:</label>
+      <input type="number" formControlName="totalAmount">
+    </div>
+    <div>
+      <label for="paymentMethod">Payment Method:</label>
+      <input type="text" formControlName="paymentMethod">
+    </div>
+    <div>
+      <label for="salespersonId">Salesperson ID:</label>
+      <input type="text" formControlName="salespersonId">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  
+  <table style="border: 1px solid #000;">
+    <thead>
+      <tr>
+        <th>Transaction Date</th>
+        <th>Customer ID</th>
+        <th>Total Amount</th>
+        <th>Payment Method</th>
+        <th>Salesperson ID</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sale of Data; let index = index">
+        <td>{{ sale.transactionDate }}</td>
+        <td>{{ sale.customerId }}</td>
+        <td>{{ sale.totalAmount }}</td>
+        <td>{{ sale.paymentMethod }}</td>
+        <td>{{ sale.salespersonId }}</td>
+        <td>
+          <button (click)="openUpdatePopup(index)">Update</button>
+        </td>
+        <td>
+          <button (click)="deleteSale(index)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
